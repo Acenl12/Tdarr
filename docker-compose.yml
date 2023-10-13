@@ -26,15 +26,7 @@ services:
       - /media:/media
       - /transcode_cache:/tmp
 
-    devices:
-      - /dev/dri:/dev/dri
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - driver: nvidia
-            count: all
-            capabilities: [gpu]
+
     
 
 # node example
@@ -58,13 +50,3 @@ services:
       - /docker/tdarr/logs:/app/logs
       - /media:/media
       - /transcode_cache:/temp
-
-    devices:
-      - /dev/dri:/dev/dri
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - driver: nvidia
-            count: all
-            capabilities: [gpu]
