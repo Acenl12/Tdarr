@@ -6,8 +6,8 @@ services:
     restart: unless-stopped
     network_mode: bridge
     ports:
-      - 8265:8265 # webUI port
-      - 8266:8266 # server port
+      - 8265:8265 
+      - 8266:8266 
     environment:
       - TZ=Europe/London
       - PUID=${PUID}
@@ -19,14 +19,12 @@ services:
       - internalNode=true
       - inContainer=true
       - nodeName=MyInternalNode
-      - NVIDIA_DRIVER_CAPABILITIES=all
-      - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - /docker/tdarr/server:/app/server
       - /docker/tdarr/configs:/app/configs
       - /docker/tdarr/logs:/app/logs
       - /media:/media
-      - /transcode_cache:/temp
+      - /transcode_cache:/tmp
 
     devices:
       - /dev/dri:/dev/dri
@@ -54,8 +52,6 @@ services:
       - serverIP=0.0.0.0
       - serverPort=8266
       - inContainer=true
-      - NVIDIA_DRIVER_CAPABILITIES=all
-      - NVIDIA_VISIBLE_DEVICES=all
 
     volumes:
       - /docker/tdarr/configs:/app/configs
